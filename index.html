@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<style>
+		html{
+			height: 100%;
+		}
+		@font-face{
+			src:url(Jost.ttf);
+			font-family: my-font;
+		}
+		body{
+			font-family: my-font;
+			color: white;
+			height: 100%;
+		}
+		/*главная*/
+		.school{
+			position: absolute;
+			top: 45%;
+			left: 74%;
+		}
+		.mastery{
+			top: 50%;
+			position: absolute;
+			left: 35%;
+		}
+		.arena{
+			position: absolute;
+			top: 45%;
+			left: 12%;
+		}
+		.main_player{
+			position: absolute;
+			top:50%;
+			left: 50%;
+			transition:  0.8s;
+		}
+		.volleyball {
+			height: 50px;
+			width:50px;
+			position: absolute;
+			left: 8%;
+			top: 60%;
+			background-image: url(Loc3/volleyball.png);
+			background-size: 100% 100%;
+		}
+		.basketball {
+			height: 40px;
+			width:40px;
+			position: absolute;
+			left: 83%;
+			top: 43%;
+			background-image: url(Loc3/basketball.png);
+			background-size: 100% 100%;
+		}
+		.tennis {
+			height: 30px;
+			width:30px;
+			position: absolute;
+			left: 47%;
+			top: 4%;
+			background-image: url(Loc3/tennis.png);
+			background-size: 100% 100%;
+		}
+		.coach {
+			height: 300px;
+			width: 400px;
+			position: absolute;
+			left: 35%;
+			top: 50%;
+			background-image: url(Loc3/coach.png);
+			background-size: 100% 100%;
+		}
+
+		/*2 локация*/
+		.loc2_teacher {
+			height: 250px;
+			width: 300px;
+			left: 68%;
+			position: absolute;
+			top: 60%;
+			background-image: url(Loc2/female_stand.png);
+			background-size: 100% 100%;
+		}
+		.loc2_talk {
+			position: absolute;
+			width: 300px;
+			left: 75%;
+			top: 38%;
+			display: none
+		}
+
+		.loc2_pravilno{
+			background-color: black;
+			width: 100px;
+			position: absolute;
+			display: none;
+		}
+
+		.loc2_player {
+			margin-left: 28%; margin-top: 26%; position: absolute;
+		}
+
+		.loc2_shpors {
+			background-color: black;
+			width: 100px;
+			position: absolute;
+			display: none;
+		}
+
+		.loc2_talkText {
+			position: absolute;
+			width: 200px;
+			left: 78%;
+			top: 43%;
+			display: none;
+			color: black
+		}
+		.loc2_timeSize {
+		font-size: 30px
+		}
+		.loc2_pole {
+			top: 25%;
+			position: absolute;
+		}
+		/* плеер */
+		.loc1_player {
+			height: 110px;
+			width: 80px;
+			position: absolute;
+			left: 70%;
+			top: 80%;
+			background-image: url(loc1/player.png);
+			background-size: 100% 100%;
+		}
+		.loc1_kuznec {
+			height: 110px;
+			width: 80px;
+			position: absolute;
+			left: 84%;
+			top: 60%;
+			background-image: url(loc1/kuznec.png);
+			background-size: 100% 100%;
+		}
+		/* наковальня */
+		.loc1_food1 {
+			height: 60px;
+			width: 100px;
+			position: absolute;
+			left: 10%;
+			top: 81%;
+			background-image: url(loc1/food1.png);
+			background-size: 100% 100%;
+		}
+		.loc1_food2 {
+			height: 60px;
+			width: 100px;
+			position: absolute;
+			left: 35%;
+			top: 85%;
+			background-image: url(loc1/food2.png);
+			background-size: 100% 100%;
+		}
+		.loc1_food3 {
+			height: 60px;
+			width: 100px;
+			position: absolute;
+			left: 66%;
+			top: 51%;
+			background-image: url(loc1/food3.png);
+			background-size: 100% 100%;
+		}
+		/* сообщение */
+		.loc1_message {
+			display: none;
+			height: 250px;
+			width: 250px;
+			position: absolute;
+			left: 85%;
+			top: 35%;
+			background-image: url(loc1/talk.png);
+			background-size: 100% 100%;
+		}
+		.loc3_message {
+			display: none;
+			height: 250px;
+			width: 250px;
+			position: absolute;
+			left: 45%;
+			top: 40%;
+			background-image: url(Loc3/talk.png);
+			background-size: 100% 100%;
+		}
+		.sword {
+			width: 130px; border: white 2px solid; display: none;
+		}
+		.nojni {
+			width: 130px; border: white 2px solid; display: none;
+		}
+		.shield {
+			width: 130px; border: white 2px solid; display: none;
+		}
+	</style>
+</head>
+<body style="background-image: url('bg1.png'); background-size: cover" class="body">
+	<div class="main">
+		<div class="sword">
+			<img src="sword.jpg">
+		</div>
+		<div class="nojni">
+			<img src="nojni.jpg">
+		</div>
+		<div class="shield">
+			<img src="shield.jpg">
+		</div>
+
+		<div  class="school">
+			<img src="school.png" alt="">
+		</div>
+		<div  class="mastery">
+			<img src="masterskaya.png" alt="" style="height: 150px; width: 150px;">
+		</div>
+		<div  class="arena">
+			<img src="arena.png" alt="" style="height: 200px; width: 200px;">
+		</div>
+		<img src="player.png" alt="" class="main_player">
+	</div>
+
+	<div class="location3" style="display: none">
+		<div class="volleyball"></div>
+		<div class="basketball"></div>
+		<div class="tennis"></div>
+		<div class="loc3_message"></div>
+		<div class="coach"></div>
+		<h4>Найдено: <span class="loc3_scoreTxt"></span></h4>
+	</div>
+
+	<div class="location2" style="display: none">
+		<h6 class="text-light loc2_timeSize">Время: <span class="loc2_timeText">10</span></h6>
+
+		<div class="loc2_teacher"></div>
+		<div class="loc2_teacher_back"></div>
+
+		<div class="loc2_ques" style="margin-left: 2%; position: absolute;  margin-top: 25%;"> </div>
+		<div  style="display: flex; position: absolute; margin-top: 20%; margin-left: 2%">
+			 <div class="loc2_shpors">Ответ 1: Вам лень </div>
+			 <div class="loc2_shpors" style="margin-left: 150px;">Ответ 2: Денег на зарплату учителям нет</div>
+			 <div class="loc2_shpors" style="margin-left: 300px; ">Ответ 3: Учителя бунтуют и не идут на работу</div>
+			 <div class="loc2_pravilno" style="margin-left: 450px; ">Ответ 4: Ну как бы пандемия происходит и самоизоляция</div>
+			 <div class="loc2_shpors" style="margin-left: 600px;">Ответ 5: Школа больше не нужна миру</div>
+			 <div class="loc2_shpors" style="margin-left: 750px;">Ответ 6: Школьникам стало лень ходить в школу </div>
+		</div>
+
+
+		<img src="Loc2/player_fall.png" class="loc2_player">
+
+		<img src="Loc2/talk.png" class="loc2_talk">
+		<h5 class="loc2_talkText" >Ответь на мой вопрос: Как думаешь почему школа сейчас не работает ?</h5>
+
+	</div>
+	<div class="location1" style="display: none">
+
+		<!-- комната -->
+		<div class="loc1_game1">
+			<!-- спан для времени -->
+			<h4>Время: <span class="loc1_timeTxt"></span></h4>
+			<!-- спан для счета -->
+			<h4>Счёт: <span class="loc1_scoreTxt"></span></h4>
+			<!-- кузнец -->
+			<div class="loc1_kuznec">
+			</div>
+			<!-- наковальня -->
+			<div class="loc1_food1">
+			</div>
+			<div class="loc1_food2">
+			</div>
+			<div class="loc1_food3">
+			</div>
+			<!-- плеер -->
+			<div class="loc1_player">
+			</div>
+			<!-- сообщение -->
+			<div class="loc1_message">
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		let mastery = document.querySelector('.mastery');
+		let school = document.querySelector('.school');
+		let arena = document.querySelector('.arena');
+		let main_block = document.querySelector('.main');
+		let location1 = document.querySelector('.location1');
+		let location2 = document.querySelector('.location2');
+		let location3 = document.querySelector('.location3');
+		let body = document.querySelector('.body');
+		let main_player = document.querySelector('.main_player');
+		let talk = document.querySelector('.loc1_message');
+		let talk3 = document.querySelector('.loc3_message');
+		let talk2 = document.querySelector('.loc2_talk');
+		let talk2Txt = document.querySelector('.loc2_talkText');
+		let timer = document.querySelector('.loc1_timeTxt');
+		let timer2 = document.querySelector('.loc2_timeText');
+		let sword = document.querySelector('.sword');
+		let nojni = document.querySelector('.nojni');
+		let shield = document.querySelector('.shield');
+		let scoreloc1 = document.querySelector('.loc1_scoreTxt');
+		let scoreloc3 = document.querySelector('.loc3_scoreTxt');
+		let food1 = document.querySelector('.loc1_food1');
+		let food2 = document.querySelector('.loc1_food2');
+		let food3 = document.querySelector('.loc1_food3');
+		let shpors = document.querySelectorAll('.loc2_shpors');
+		let pravilno = document.querySelector('.loc2_pravilno');
+		let teacher = document.querySelector('.loc2_teacher');
+		let volleyball = document.querySelector('.volleyball');
+		let basketball = document.querySelector('.basketball');
+		let tennis = document.querySelector('.tennis');
+		let time = 17;
+		let time2 = 15;
+		let score = 0;
+		let score1 = 0;
+		let score2 = 0;
+		let score3 = 0;
+		let loc3Score = 0;
+		let swordGeneral = 0;
+		let nojniGeneral = 0;
+		let shieldGeneral = 0;
+		scoreloc1.innerHTML = score1;
+		scoreloc3.innerHTML = loc3Score
+
+		mastery.onclick = function() {
+			main_player.style.top = "45%";
+      main_player.style.left = "30%";
+			time = 17;
+
+			let changeLocation1 = function() {
+				main_block.style.display = 'none';
+				location1.style.display = 'block';
+				body.style.backgroundImage = 'url(loc1/bg.png)';
+				timer.innerHTML = time;
+			}
+			setTimeout(changeLocation1, 2000);
+
+			let showMessage = function() {
+				talk.style.display = 'block';
+				talk.innerHTML = 'Йоу можешь помочь? Продегустируй мне 3 блюда, никак не могу оценить их...';
+				talk.style.paddingTop = 75 + 'px';
+				talk.style.paddingLeft = 25 + 'px';
+				talk.style.color = 'black' ;
+			}
+			setTimeout(showMessage, 3000);
+
+			let timeMinus = function() {
+				time = time - 1;
+				timer.innerHTML = time;
+				if (time == 0) {
+					alert('Время вышло!');
+					location1.style.display = 'none';
+					main_block.style.display = 'block';
+					body.style.backgroundImage = 'url(bg1.png)';
+					clearInterval(timerStop2);
+				}
+			}
+			let timerStop = setInterval(timeMinus, 1000);
+
+			food1.onclick = function () {
+				score1 = score1 + 1;
+				score = score + 1;
+				scoreloc1.innerHTML = score1 + score2 + score3;
+				if (score1 >= 10 & time > 0) {
+					food1.style.display = 'none';
+				}
+				if (score >= 30) {
+					alert('Спасибо бро)');
+					clearInterval(timerStop);
+					location1.style.display = 'none';
+					main_block.style.display = 'block';
+					body.style.backgroundImage = 'url(bg1.png)';
+					sword.style.display = 'block';
+					swordGeneral = 1;
+				}
+			}
+
+			food2.onclick = function () {
+				score2 = score2 + 1;
+				score = score + 1;
+				scoreloc1.innerHTML = score2 + score1 + score3;
+				if (score2 >= 10 & time > 0) {
+					food2.style.display = 'none';
+				}
+				if (score >= 30) {
+					alert('Спасибо бро)');
+					clearInterval(timerStop);
+					location1.style.display = 'none';
+					main_block.style.display = 'block';
+					body.style.backgroundImage = 'url(bg1.png)';
+					sword.style.display = 'block';
+					swordGeneral = 1;
+				}
+			}
+			food3.onclick = function () {
+				score3 = score3 + 1;
+				score = score + 1;
+				scoreloc1.innerHTML = score3 + score1 + score2;
+				if (score3 >= 10 & time > 0) {
+					food3.style.display = 'none';
+				}
+				if (score >= 30) {
+					alert('Спасибо бро)');
+					clearInterval(timerStop);
+					location1.style.display = 'none';
+					main_block.style.display = 'block';
+					body.style.backgroundImage = 'url(bg1.png)';
+					sword.style.display = 'block';
+					swordGeneral = 1;
+				}
+			}
+		}
+
+		school.onclick = function(){
+			main_player.style.top = "45%";
+			main_player.style.left = "74%";
+
+			let changeLocation2 = function(){
+				main_block.style.display = 'none';
+				location2.style.display = 'block';
+				body.classList.add("bg-success");
+        body.style.backgroundImage = "url('Loc2/bg.png')";
+				timer2.innerHTML = time2;
+			}
+			setTimeout(changeLocation2, 2000)
+
+			let showMessage2 = function() {
+				talk2.style.display = 'block';
+				talk2Txt.style.display = 'block';
+				talk2Txt.style.paddingTop = 0 + 'px';
+				talk2Txt.style.paddingLeft = 15 + 'px';
+				talk2Txt.style.color = 'black';
+			}
+			setTimeout(showMessage2, 3000)
+
+			let showShpors = function () {
+				alert('У тебя 15 секунд! Отвечай)');
+				for (let i = 0; i < 5; i++) {
+					shpors[i].style.display = 'block';
+				}
+				pravilno.style.display = 'block';
+
+				let timeMinus2 = function() {
+					time2 = time2 - 1;
+					timer2.innerHTML = time2;
+					if (time2 == 0) {
+						alert('Время вышло!');
+						clearInterval(timerStop2);
+						location2.style.display = 'none';
+						main_block.style.display = 'block';
+						body.style.backgroundImage = 'url(bg1.png)';
+					}
+				}
+				let timerStop2 = setInterval(timeMinus2, 1000);
+
+				for (let i = 0; i < 5; i++) {
+					shpors[i].onclick = function () {
+						alert('Неправильно!');
+						location2.style.display = 'none';
+						main_block.style.display = 'block';
+						body.style.backgroundImage = 'url(bg1.png)';
+						clearInterval(timerStop2);
+					}
+				}
+				pravilno.onclick = function () {
+					alert('Правильно!');
+					nojniGeneral = 1;
+					clearInterval(timerStop2);
+					main_block.style.display = 'block';
+					location2.style.display = 'none';
+					body.style.backgroundImage = 'url(bg1.png)';
+					nojni.style.display = 'block';
+				}
+			}
+			setTimeout(showShpors, 6000)
+		}
+
+		arena.onclick = function(){
+			main_player.style.top = "43%";
+			main_player.style.left = "10%";
+
+			let changeLocation3 = function(){
+				main_block.style.display = 'none';
+				location3.style.display = 'block';
+				body.style.backgroundImage = 'url(loc3/arena.png)';
+			}
+			setTimeout(changeLocation3, 2000)
+
+			let showMessage = function() {
+				talk3.style.display = 'block';
+				talk3.innerHTML = 'Найди 3 мяча! Давай быстрее чо такой медлительный !';
+				talk3.style.paddingTop = 75 + 'px';
+				talk3.style.paddingLeft = 25 + 'px';
+				talk3.style.color = 'black' ;
+			}
+			setTimeout(showMessage, 3000);
+
+			volleyball.onclick = function () {
+				loc3Score = loc3Score + 1;
+				scoreloc3.innerHTML = loc3Score;
+				volleyball.style.display = 'none';
+				if (loc3Score >= 3) {
+					alert('Лан давай малой, пасибо, а теперь вали отсюда!)');
+					location3.style.display = 'none';
+					main_block.style.display = 'block';
+					body.style.backgroundImage = 'url(bg1.png)';
+					shield.style.display = 'block';
+					shieldGeneral = 1;
+				}
+			}
+
+			basketball.onclick = function () {
+				loc3Score = loc3Score + 1;
+				scoreloc3.innerHTML = loc3Score;
+				basketball.style.display = 'none';
+				if (loc3Score >= 3) {
+					alert('Лан давай малой, пасибо, а теперь вали отсюда!)');
+					location3.style.display = 'none';
+					main_block.style.display = 'block';
+					body.style.backgroundImage = 'url(bg1.png)';
+					shield.style.display = 'block';
+					shieldGeneral = 1;
+				}
+			}
+
+			tennis.onclick = function () {
+				loc3Score = loc3Score + 1;
+				scoreloc3.innerHTML = loc3Score;
+				tennis.style.display = 'none';
+				if (loc3Score >= 3) {
+					alert('Лан давай малой, пасибо, а теперь вали отсюда!)');
+					location3.style.display = 'none';
+					main_block.style.display = 'block';
+					body.style.backgroundImage = 'url(bg1.png)';
+					shield.style.display = 'block';
+					shieldGeneral = 1;
+				}
+			}
+		}
+
+		let check = function () {
+			if (swordGeneral == 1 & nojniGeneral == 1 & shieldGeneral == 1) {
+				main_block.style.display = 'none';
+				location1.style.display = 'none';
+				location2.style.display = 'none';
+				location3.style.display = 'none';
+				body.style.backgroundImage = 'url(win.png)';
+				body.style.backgroundSize = '100% 100%';
+			}
+		}
+		setInterval(check, 4000)
+
+	</script>
+
+
+</body>
+</html>
